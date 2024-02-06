@@ -1,7 +1,6 @@
 package main;
 
 import java.text.DecimalFormat;
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class Exercise {
