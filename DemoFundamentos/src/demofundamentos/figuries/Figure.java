@@ -2,27 +2,68 @@ package demofundamentos.figuries;
 
 import java.util.Scanner;
 
-public class Figure {
+public abstract class Figure implements IFunciones {
 	Scanner teclado = new Scanner(System.in);
-	int side, radio, base;
+	private int side, height, base;
+	private double area;
 
+	// Sobrecarga - varios constructores
 	public Figure() {
-		super();
+		System.out.println("Estamos trabajando con figuras");
 	}
 
-	public Figure(int side, int radio, int base) {
+	public Figure(int side, int height, int base) {
 		super();
 		this.side = side;
-		this.radio = radio;
+		this.height = height;
 		this.base = base;
 	}
-	
-	public void nameFigure() {
-		System.out.println("Identique la figura");
+
+	public Figure(int side, int height, int base, int area) {
+		super();
+		this.side = side;
+		this.height = height;
+		this.base = base;
+		this.area = area;
 	}
+	
+	// Getters and Setters
+	public int getSide() {
+		return side;
+	}
+
+	public void setSide(int side) {
+		this.side = side;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+	public int getBase() {
+		return base;
+	}
+
+	public void setBase(int base) {
+		this.base = base;
+	}
+
+	public double getArea() {
+		return area;
+	}
+
+	public void setArea(double area) {
+		this.area = area;
+	}
+	
+	public abstract void calcularArea();
 
 	@Override
 	public String toString() {
-		return "Figure [side=" + side + ", radio=" + radio + ", base=" + base + "]";
+		return "Figure [side=" + side + ", height=" + height + ", base=" + base + ", area=" + area + "]";
 	}
 }
