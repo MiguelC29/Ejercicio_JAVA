@@ -10,12 +10,6 @@ public class Calculadora implements FuncionesCalculadora{
 		super();
 	}
 
-	public Calculadora(double numero1, double numero2) {
-		super();
-		this.numero1 = numero1;
-		this.numero2 = numero2;
-	}
-
 	public double getNumero1() {
 		return numero1;
 	}
