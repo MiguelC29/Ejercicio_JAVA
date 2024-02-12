@@ -57,4 +57,10 @@ public class Calculadora implements FuncionesCalculadora{
 		this.resultado = this.numero1 / this.numero2;
 		return this.resultado;
 	}
+
+	@Override
+	public double raizCuadrada(double num1) {
+		this.resultado = Math.sqrt(this.getNumero1());
+		return this.resultado;
+	}
 }
