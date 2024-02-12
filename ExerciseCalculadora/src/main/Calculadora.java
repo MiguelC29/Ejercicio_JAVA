@@ -63,4 +63,16 @@ public class Calculadora implements FuncionesCalculadora{
 		this.resultado = Math.sqrt(this.getNumero1());
 		return this.resultado;
 	}
+
+	@Override
+	public double elevarCuadrado(double num1) {
+		this.resultado = Math.pow(this.getNumero1(), 2);
+		return this.resultado;
+	}
+
+	@Override
+	public double porcentaje(double num1, double num2) {
+		this.resultado = (this.numero1 * this.numero2) / 100;
+		return this.resultado;
+	}
 }

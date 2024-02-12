@@ -16,15 +16,32 @@ public class App {
 			primeraEjecucion = true;
 			menuPrincipal(primeraEjecucion);
 			
-            // Verifica si la opción ingresada está en el rango de 1 a 5
-			if (opcion > 0 && opcion < 6) {
+            // Verifica si la opción ingresada está en el rango de 1 a 7
+			if (opcion >= 1 && opcion <= 7) {
 				// Operaciones básicas
-				if (opcion > 0 && opcion < 5) {
-					System.out.print("\nIngrese un número: ");
+				if (opcion >= 1 && opcion <= 5) {
+					System.out.print("\nIngrese un número: ");	
 					calculadora.setNumero1(teclado.nextDouble());
 					
-					System.out.print("Ingrese otro número: ");
-					calculadora.setNumero2(teclado.nextDouble());
+					// Opcion de dividir
+					if (opcion == 4) {
+						// Se va ejecutar hasta que el número 2 es decir el denominador sea diferente de 0
+						do {
+							System.out.print("Ingrese otro número: ");
+							calculadora.setNumero2(teclado.nextDouble());
+							if (calculadora.getNumero2() == 0) {
+								System.out.println("El denominador no puede ser 0");
+							}
+						} while (calculadora.getNumero2() == 0);
+					} else {
+						// Opcion diferente de 4
+						if (opcion == 5) {
+							System.out.print("Ingrese el valor del porcentaje a calcular: ");
+						} else {
+							System.out.print("Ingrese otro número: ");
+						}
+						calculadora.setNumero2(teclado.nextDouble());
+					}
 					
 	                // Realiza la operación seleccionada e imprime el resultado
 					operaciones(calculadora);
@@ -33,18 +50,9 @@ public class App {
 						System.out.println("\n¿Deasea continuar con esta operación?: ");
 						System.out.println("1. SI");
 						System.out.println("2. NO");
-						
-						try {
-							opcion2 = teclado.nextInt();
-				        } catch (InputMismatchException e) {
-				            // Maneja la excepción si el usuario ingresa un valor no válido
-				            System.out.println("Error: Ingrese un número válido.");
-				            teclado.nextLine(); // Limpiar el buffer del scanner
-				            opcion2 = -1; // Asignar un valor no válido para repetir el bucle
-				        }
 						continuarOperacion(calculadora);
 					} while(opcion2 != 2);
-				} else if (opcion >= 5) {
+				} else if (opcion >= 6) {
 					System.out.print("\nIngrese un número: ");
 					calculadora.setNumero1(teclado.nextDouble());
 					// Realiza la operación seleccionada e imprime el resultado
@@ -54,15 +62,6 @@ public class App {
 						System.out.println("\n¿A este resultado desea realizarle otra operación?: ");
 						System.out.println("1. SI");
 						System.out.println("2. NO");
-						
-						try {
-							opcion2 = teclado.nextInt();
-				        } catch (InputMismatchException e) {
-				            // Maneja la excepción si el usuario ingresa un valor no válido
-				            System.out.println("Error: Ingrese un número válido.");
-				            teclado.nextLine(); // Limpiar el buffer del scanner
-				            opcion2 = -1; // Asignar un valor no válido para repetir el bucle
-				        }
 						continuarOperacion(calculadora);
 					} while(opcion2 != 2);
 				}
@@ -84,7 +83,9 @@ public class App {
         System.out.println("3. Multiplicar");
         System.out.println("4. Dividir");
         if(primerEjecucion) {
-        	System.out.println("5. Raíz cuadrada");
+        	System.out.println("5. Porcentaje");
+        	System.out.println("6. Raíz cuadrada");
+        	System.out.println("7. Elevar al cuadrado");
         	System.out.println("0. Salir");
         }
         System.out.print("Por favor ingrese la operación a realizar: ");
@@ -128,9 +129,21 @@ public class App {
                 break;
             }
             case 5: {
+            	System.out.println("\nPORCENTAJE");
+            	calculadora.porcentaje(calculadora.getNumero1(), calculadora.getNumero2());
+            	System.out.println("El " + calculadora.getNumero2() + "% de " + calculadora.getNumero1() + " es " + calculadora.getResultado());
+            	break;
+            }
+            case 6: {
             	System.out.println("\nRAIZ CUADRADA");
             	calculadora.raizCuadrada(calculadora.getNumero1());
-            	System.out.println(" √" + calculadora.getNumero1() + " = " + calculadora.getResultado());
+            	System.out.println("√" + calculadora.getNumero1() + " = " + calculadora.getResultado());
+            	break;
+            }
+            case 7: {
+            	System.out.println("\nELEVAR AL CUADRADO");
+            	calculadora.elevarCuadrado(calculadora.getNumero1());
+            	System.out.println(calculadora.getNumero1() + "²" + " = " + calculadora.getResultado());
             	break;
             }
         }
@@ -141,6 +154,14 @@ public class App {
 	
     // Pregunta al usuario si desea continuar con la operación actual o reiniciar el programa para realizar una nueva operación
 	public static void continuarOperacion(Calculadora calculadora) {
+		try {
+			opcion2 = teclado.nextInt();
+        } catch (InputMismatchException e) {
+            // Maneja la excepción si el usuario ingresa un valor no válido
+            System.out.println("Error: Ingrese un número válido.");
+            teclado.nextLine(); // Limpiar el buffer del scanner
+            opcion2 = -1; // Asignar un valor no válido para repetir el bucle
+        }
 		if(opcion2 == 1) {
             // Bucle para seleccionar una nueva operación y continuar con la calculadora
 			do {
