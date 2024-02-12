@@ -4,15 +4,8 @@ public class CalculadoraCientifica extends Calculadora implements FuncionesCalcu
 
 	@Override
 	public void menu() {
-    	System.out.println("2. Porcentaje");
-    	System.out.println("3. Raíz cuadrada");
-    	System.out.println("4. Elevar al cuadrado");
-	}
-
-	@Override
-	public void realizarOperacion() {
-		// TODO Auto-generated method stub
-		
+    	System.out.println("2. Raíz cuadrada");
+    	System.out.println("3. Elevar al cuadrado");
 	}
 	
 	@Override
@@ -26,4 +19,26 @@ public class CalculadoraCientifica extends Calculadora implements FuncionesCalcu
 		this.resultado = Math.pow(num1, 2);
 		return this.resultado;
 	}
+
+	@Override
+	public void realizarOperacion(int opcion, double num) {
+		// Realiza la operación seleccionada y muestra el resultado
+        switch (opcion) {
+            case 2: {
+            	System.out.println("\nRAIZ CUADRADA");
+            	raizCuadrada(num);
+            	System.out.println("√" + num + " = " + resultado);
+            	break;
+            }
+            case 3: {
+            	System.out.println("\nELEVAR AL CUADRADO");
+            	elevarCuadrado(num);
+            	System.out.println(num + "²" + " = " + resultado);
+            	break;
+            }
+        }
+	}
+
+	@Override
+	public void realizarOperacion(int opcionMenu, double numero1, double numero2) {}
 }

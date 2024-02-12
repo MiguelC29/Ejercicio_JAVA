@@ -1,8 +1,9 @@
 package main;
 
 public abstract class Calculadora {
-	public double numero1, numero2, resultado;
+	public double resultado;
 	
 	public abstract void menu();
-	public abstract void realizarOperacion();
+	public abstract void realizarOperacion(int opcionMenu, double numero1);
+	public abstract void realizarOperacion(int opcionMenu, double numero1, double numero2);
 }
