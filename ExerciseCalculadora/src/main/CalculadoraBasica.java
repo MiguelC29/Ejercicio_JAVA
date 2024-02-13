@@ -8,7 +8,7 @@ public class CalculadoraBasica extends Calculadora implements FuncionesCalculado
 
 	@Override
 	public void menu() {
-		System.out.println("1. Sumar");
+		System.out.println("\n1. Sumar");
         System.out.println("2. Restar");
         System.out.println("3. Multiplicar");
         System.out.println("4. Dividir");
