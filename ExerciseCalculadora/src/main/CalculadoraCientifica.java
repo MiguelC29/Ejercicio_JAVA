@@ -12,9 +12,12 @@ public class CalculadoraCientifica extends Calculadora implements FuncionesCalcu
     	System.out.println(" 7. Seno");
     	System.out.println(" 8. Coseno");
     	System.out.println(" 9. Tangente");
-    	System.out.println("10. Arcoseno");
-    	System.out.println("11. Arcocoseno");
-    	System.out.println("12. Arcotangente");
+    	System.out.println("10. Secante");
+    	System.out.println("11. Cosecante");
+    	System.out.println("12. Cotangente");
+    	System.out.println("13. Arcoseno");
+    	System.out.println("14. Arcocoseno");
+    	System.out.println("15. Arcotangente");
 	}
 	
 	@Override
@@ -70,19 +73,37 @@ public class CalculadoraCientifica extends Calculadora implements FuncionesCalcu
             	break;
             }
             case 10: {
+            	System.out.println("\nSECANTE");
+            	secante(num);
+            	System.out.println("sec(" + num + "°) es " + this.resultado);
+            	break;
+            }
+            case 11: {
+            	System.out.println("\nCOSECANTE");
+            	cosecante(num);
+            	System.out.println("cosec(" + num + "°) es " + this.resultado);
+            	break;
+            }
+            case 12: {
+            	System.out.println("\nCOTANGENTE");
+            	cotangente(num);
+            	System.out.println("cotg(" + num + "°) es " + this.resultado);
+            	break;
+            }
+            case 13: {
             	System.out.println("\nARCOSENO");
             	arcoseno(num);
             	System.out.println("sen-1(" + num + ") es " + this.resultado + "°");
             	break;
             }
-            case 11: {
+            case 14: {
             	System.out.println("\nARCOCOSENO");
             	arcocoseno(num);
             	System.out.println("cos-1(" + num + ") es " + this.resultado + "°");
             	break;
             }
-            case 12: {
-            	System.out.println("\nTANGENTE");
+            case 15: {
+            	System.out.println("\nARCOTANGENTE");
             	arcotangente(num);
             	System.out.println("tan-1(" + num + ") es " + this.resultado + "°");
             	break;
@@ -141,6 +162,27 @@ public class CalculadoraCientifica extends Calculadora implements FuncionesCalcu
 	public double tangente(double num1) {
 		double anguloEnRadianes = Math.toRadians(num1);
 		this.resultado = Math.tan(anguloEnRadianes);
+		return this.resultado;
+	}
+	
+	@Override
+	public double secante(double num1) {
+		double anguloEnRadianes = Math.toRadians(num1);
+		this.resultado = 1 / Math.cos(anguloEnRadianes);
+		return this.resultado;
+	}
+
+	@Override
+	public double cosecante(double num1) {
+		double anguloEnRadianes = Math.toRadians(num1);
+		this.resultado = 1 / Math.sin(anguloEnRadianes);
+		return this.resultado;
+	}
+
+	@Override
+	public double cotangente(double num1) {
+		double anguloEnRadianes = Math.toRadians(num1);
+		this.resultado = 1 / Math.tan(anguloEnRadianes);
 		return this.resultado;
 	}
 	

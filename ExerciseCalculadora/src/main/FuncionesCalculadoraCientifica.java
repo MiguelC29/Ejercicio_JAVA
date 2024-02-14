@@ -9,6 +9,9 @@ public interface FuncionesCalculadoraCientifica {
 	public double seno(double num1);
 	public double coseno(double num1);
 	public double tangente(double num1);
+	public double secante(double num1);
+	public double cosecante(double num1);
+	public double cotangente(double num1);
 	public double arcoseno(double num1);
 	public double arcocoseno(double num1);
 	public double arcotangente(double num1);

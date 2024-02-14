@@ -48,7 +48,7 @@ public class App {
                 opcionMenuPp = -1; // Asignar un valor no válido para repetir el bucle
             }
 	        
-	        if(!(opcionMenuPp >= 0 && opcionMenuPp <= 12)) {
+	        if(!(opcionMenuPp >= 0 && opcionMenuPp <= 15)) {
 	        	System.out.println("Opción incorrecta, por favor ingrese una opción del menú\n");
 	        } else {
 	        	System.out.println("");
@@ -118,11 +118,11 @@ public class App {
 			if(opcionContinuar == 1) {
 	            // Bucle para seleccionar una nueva operación y continuar con la calculadora
 				do {
+					// Obtener el primer número (resultado anterior)
+					num1 = (opcionMenuPp == 1) ? calBasica.resultado : calCientifica.resultado;
+					solicitudNumero2();
 					// Verifica si la opción ingresada está en el rango de 1 a 5
 					if (opcionMenuBs >= 1 && opcionMenuBs <= 5) {
-			            // Obtener el primer número (resultado anterior)
-						num1 = (opcionMenuPp == 1) ? calBasica.resultado : calCientifica.resultado;
-						solicitudNumero2();
 						// De acuerdo a la operacion seleccionada se ejecuta la calculadora correspondiente
 						ejecutarOperacion();
 						break; // Salir del bucle interno si la operación es válida
@@ -185,6 +185,7 @@ public class App {
 			if (opcionMenuBs == 5) {
 				// Opcion 5 porcentaje
 				System.out.print("Ingrese el valor del porcentaje a calcular: ");
+				opcionMenuPp = 1;
 			} else {
 				// Opciones básicas 1, 2, 3
 				System.out.print("Ingrese otro número: ");
