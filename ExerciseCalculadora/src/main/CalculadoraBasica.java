@@ -51,7 +51,9 @@ public class CalculadoraBasica extends Calculadora implements FuncionesCalculado
             	break;
             }
         }
-    	System.out.println(num1 + signo + num2 + " = " + resultado);
+        if (opcion != 5) {
+        	System.out.println(num1 + signo + num2 + " = " + resultado);	
+        }
 	}
 
 	@Override
