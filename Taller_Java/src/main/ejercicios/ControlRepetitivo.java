@@ -378,11 +378,249 @@ public class ControlRepetitivo {
 	}
 	
 	public static void ejercicio63() {
-		System.out.println("En proceso pronto lo tendras disponible");
+		// Ejercicio 63
+		// Declaracion de variables
+		int edad, opcion, opSexo, opEC, opEs;
+		String sexo, estadoCivil, especialidad;
+		// Acumuladores / Contadores
+		int totalMujeres = 0, totalHombres = 0, sumEdadesH = 0, sumEdadesM = 0, totalHombresSol = 0, totalMujeresSol = 0;
+		double totalEncuestados, mujeresAdultas = 0, hombresJovenes = 0, cantSol = 0, cantCas = 0, cantUnLib = 0, cantSep = 0, cantViud = 0, cantAdso = 0, cantAdsi = 0;
+		double cantFinan = 0, promedioMujeres = 0, promedioHombres = 0, porcentajeSol, porcentajeCas, porcentajeUnLib, porcentajeSep, porcentajeViud, porcentajeMujeresAdultas;
+		double porcentajeHombresJovenes, porcentajeAdso, porcentajeAdsi, porcentajeFinan;
+		
+		do {
+			// Solicitud de datos
+			System.out.println("INGRESE LOS SIGUIENTES DATOS DEL ALUMNO");
+			System.out.print("Edad: ");
+			edad = teclado.nextInt();
+			
+			do {
+				System.out.println("Sexo");
+				System.out.println("1. HOMBRE");
+				System.out.println("2. MUJER");
+				opSexo = teclado.nextInt();
+				if (opSexo != 1 && opSexo != 2) {
+					System.out.println("Por favor, ingrese una opción del menú");
+				} else {
+					break;
+				}
+			} while(true);
+			
+			
+			System.out.println("Estado civil");
+			System.out.println("1. Soltero/a");
+			System.out.println("2. Casado/a");
+			System.out.println("3. Union libre");
+			System.out.println("4. Separado/a");
+			System.out.println("5. Viudo/a");
+			opEC = teclado.nextInt();
+			
+			System.out.println("Especialidad que cursa");
+			System.out.println("1. ADSO");
+			System.out.println("2. ADSI");
+			System.out.println("3. FINANCIERA Y CONTADORA");
+			opEs = teclado.nextInt();
+			
+			switch (opSexo) {
+			case 1: {
+				sexo = "HOMBRE";
+				totalHombres++;
+				if(opEC == 1) {
+					totalHombresSol++;
+				}
+				if(edad > 17 && edad < 21) {
+					hombresJovenes++;
+				}
+				sumEdadesH += edad; 
+				break;
+			}
+			case 2: {
+				sexo = "MUJER";
+				totalMujeres++;
+				if(opEC == 1) {
+					totalMujeresSol++;
+				}
+				if(edad > 21) {
+					mujeresAdultas++;
+				}
+				sumEdadesM += edad;
+				break;
+			}
+			default: {
+				sexo = "";
+			}
+			}
+			
+			switch (opEC) {
+			case 1: {
+				estadoCivil = "SOLTERO/A";
+				cantSol++;
+				break;
+			}
+			case 2: {
+				estadoCivil = "CASADO/A";
+				cantCas++;
+				break;
+			}
+			case 3: {
+				estadoCivil = "UNION LIBRE";
+				cantUnLib++;
+				break;
+			}
+			case 4: {
+				estadoCivil = "SEPARADO/A";
+				cantSep++;
+				break;
+			}
+			case 5: {
+				estadoCivil = "VIUDO/A";
+				cantViud++;
+				break;
+			}
+			}
+			
+			switch (opEs) {
+			case 1: {
+				especialidad = "ADSO";
+				cantAdso++;
+				break;
+			}
+			case 2: {
+				especialidad = "ADSI";
+				cantAdsi++;
+				break;
+			}
+			case 3: {
+				especialidad = "FINANCIERA Y CONTADORA";
+				cantFinan++;
+				break;
+			}
+			}		
+			
+			System.out.print("¿Desea agregar datos de otro alumno? 1.SI ó 2.NO: ");
+			opcion = teclado.nextInt();
+		} while (opcion != 2);
+		
+		if (sumEdadesM > 0) {
+			// Promedio de edad de las mujeres
+			promedioMujeres = sumEdadesM / totalMujeres;	
+		}
+		
+		if (sumEdadesH > 0) {
+			// Promedio de edad de los hombres
+			promedioHombres = sumEdadesH / totalHombres;	
+		}
+		
+		totalEncuestados = totalHombres + totalMujeres;
+		// Calcular estadísticas
+		porcentajeSol = (cantSol / totalEncuestados) * 100;
+		porcentajeCas = (cantCas / totalEncuestados) * 100;
+		porcentajeUnLib = (cantUnLib / totalEncuestados) * 100;
+		porcentajeSep = (cantSep / totalEncuestados) * 100;
+		porcentajeViud = (cantViud / totalEncuestados) * 100;
+		porcentajeHombresJovenes = (hombresJovenes / totalEncuestados) * 100;
+		porcentajeMujeresAdultas = (mujeresAdultas / totalEncuestados) * 100;
+		porcentajeAdso = (cantAdso / totalEncuestados) * 100;
+		porcentajeAdsi = (cantAdsi / totalEncuestados) * 100;
+		porcentajeFinan = (cantFinan / totalEncuestados) * 100;
+				
+		// Mostrar resultado
+		System.out.println("\nRESUMEN");
+		System.out.println("Promedio de edad mujeres: " + promedioMujeres);
+		System.out.println("Promedio de edad hombre: " + promedioHombres);
+		System.out.println("Cantidad de hombres encuestados: " + totalHombres);
+		System.out.println("Cantidad de mujeres encuestados: " + totalMujeres);
+		System.out.println("Total encuestados: " + (int) totalEncuestados);
+		System.out.println("Porcentaje de personas solteras: " + porcentajeSol + "%");
+		System.out.println("Porcentaje de personas casadas: " + porcentajeCas + "%");
+		System.out.println("Porcentaje de personas en union libre: " + porcentajeUnLib + "%");
+		System.out.println("Porcentaje de personas separadas: " + porcentajeSep + "%");
+		System.out.println("Porcentaje de personas viudas: " + porcentajeViud + "%");
+		System.out.println("Cantidad de alumnos ADSO: " + cantAdso + " que corresponden al " + porcentajeAdso + "%");
+		System.out.println("Cantidad de alumnos ADSI: " + cantAdsi + " que corresponden al " + porcentajeAdsi + "%");
+		System.out.println("Cantidad de alumnos Financiera: " + cantFinan + " correspondiente al " + porcentajeFinan + "%");
+		System.out.println("Porcentaje de mujeres adultas: " + porcentajeMujeresAdultas + "%");
+		System.out.println("Porcentaje de hombres jóvenes: " + porcentajeHombresJovenes + "%");
+		System.out.println("Cantidad de hombres solteros: " + totalHombresSol);
+		System.out.println("Cantidad de mujeres solteras: " + totalMujeresSol);
 	}
 	
 	public static void ejercicio65() {
-		System.out.println("En proceso pronto lo tendras disponible");
+		// Ejercicio 65
+		// Declaracion de variables
+		int opCargo, cantHijos, diasAsis, numCedula, opcion;
+		String cargo = "", nombreEmpleado;
+		double sueldoNeto, sueldoBasico = 0, cajaAhorro, seguroSocial, aporteHijos, aporteAsistencia;
+		
+		do {
+			// Solicitud de datos
+			System.out.println("INGRESE LOS SIGUIENTES DATOS DEL TRABAJADOR");
+			System.out.print("Nombre del trabajador: ");
+			nombreEmpleado = teclado.nextLine();
+			
+			System.out.print("Número de cédula: ");
+			numCedula = teclado.nextInt();
+			
+			System.out.println("CARGOS");
+			System.out.println("1. Obrero\n2. Administrativo\n3. Ejecutivo");
+			System.out.print("Ingrese su cargo: ");
+			opCargo = teclado.nextInt();
+			
+			System.out.print("Cantidad de hijos (max 5): ");
+			cantHijos = teclado.nextInt();
+			
+			System.out.print("¿De los 30 días del mes cuantos días asistió?: ");
+			diasAsis = teclado.nextInt();
+			
+			// De acuerdo al cargo se obtiene el valor del salario basico
+			switch (opCargo) {
+			case 1: {
+				cargo = "OBRERO";
+				sueldoBasico = 100000;
+				break;
+			}
+			case 2: {
+				cargo = "ADMINISTRATIVO";
+				sueldoBasico = 165500;
+				break;
+			}
+			case 3: {
+				cargo = "EJECUTIVO";
+				sueldoBasico = 250000;
+				break;
+			}
+			}
+			// Calcular asignaciones y deducciones
+			// Por cada hijo se aporta 10% salario basico hasta un maximo de 5 hijos
+			aporteHijos = (cantHijos <= 5) ? cantHijos * (sueldoBasico * 0.1) : 0;
+			// Si tiene una asistencia superior al 95% de 30 dias se le da un aporte por asistencia
+			aporteAsistencia = (diasAsis > 28) ? sueldoBasico * 0.05 : 0;
+			// deduccion de caja de ahorro por 10% del sueldo basico
+			cajaAhorro = sueldoBasico * 0.1;
+			// deduccion de seguro social por 2% del sueldo basico
+			seguroSocial = sueldoBasico * 0.02;
+			// Se calcula el sueldo neto a pagar teniendo en cuenta las aportaciones y deducciones
+			sueldoNeto = sueldoBasico + aporteHijos + aporteAsistencia - cajaAhorro - seguroSocial;
+			// Mostrar resultado
+			System.out.println("\nRESUMEN DATOS TRABAJADOR");
+			System.out.println("Nombre: " + nombreEmpleado.toUpperCase());
+			System.out.println("Cédula: " + numCedula);
+			System.out.println("Cargo: " + cargo);
+			System.out.println("Sueldo básico: $" + sueldoBasico);
+			System.out.println("Aporte Caja de Ahorros: $" + cajaAhorro);
+			System.out.println("Aporte Seguro Social: $" + seguroSocial);
+			System.out.println("Sueldo Neto: $" + sueldoNeto);
+			
+			System.out.print("\n¿Desea agregar datos de otro alumno? 1.SI ó 2.NO: ");
+			opcion = teclado.nextInt();
+			teclado.nextLine(); // Solucion error scanner
+			
+			// REINICIAMOS LOS VALORES
+			cajaAhorro = 0;
+			seguroSocial = 0;
+			aporteHijos = 0;
+			aporteAsistencia = 0;
+		} while (opcion != 2);
 	}
 	
 	public static void ejercicio67() {

@@ -87,7 +87,10 @@ public class Exercise {
 									System.out.println("");
 								} while((opcion2 < 0 && opcion2 > 23) || opcion2 % 2 == 0);
 						}
+						System.out.println("");
+						break;
 					}
+					break;
 				}
 				case 2: {
 					System.out.println("\nEstructura de Control de Decisión");
@@ -148,7 +151,10 @@ public class Exercise {
 									System.out.println("");
 								} while((opcion2 < 25 && opcion2 > 45) || opcion2 % 2 == 0);
 						}
+						System.out.println("");
+						break;
 					}
+					break;
 				} case 3: {
 					System.out.println("\nEstructuras de Control Repetitivo");
 					System.out.print("Por favor, ingrese un número del 47 al 71 sin contar los pares o ingrese 0 para volver: ");
@@ -216,6 +222,8 @@ public class Exercise {
 									System.out.println("");
 								} while((opcion2 < 47 && opcion2 > 71) || opcion2 % 2 == 0);
 						}
+						System.out.println("");
+						break;
 					}
 				}
 				default :
